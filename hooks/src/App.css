@@ -25,3 +25,10 @@ button{
     flex-direction: column;
     margin-top:50px;
 }
+
+.Remove{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+}

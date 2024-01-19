@@ -7,10 +7,16 @@ const Loginform = () => {
 
   const submitform = (e) => {
     e.preventDefault();
-    const newEntry = { email: email, password: password };
-    setEntry([ newEntry]);
-    setemail(''); 
-    setpassword(''); 
+    if(email && password){
+      const newEntry = { id : new Date().getTime().toString,email: email, password: password };
+      setEntry([ newEntry]);
+      setemail(''); 
+      setpassword('');
+    }
+    else{
+      alert(" Please fill the data")
+    }
+   
   };
 
   return (
@@ -45,8 +51,8 @@ const Loginform = () => {
         <button type="submit">Submit</button>
       </form>
       <div>
-        {Entry.map((currentElem, index) => (
-          <div key={index}>
+        {Entry.map((currentElem) => (
+          <div key={currentElem.id}>
            <p> Email: {currentElem.email}</p>
            <p> Password: {currentElem.password}</p>
           </div>

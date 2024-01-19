@@ -4,26 +4,44 @@ const Loginform = () => {
   const [email, setemail] = useState('');
   const [password, setpassword] = useState('');
   const [Entry, setEntry] = useState([]);
+  const [Showdata,setShowData]=useState([]);
 
+  // const submitform = (e) => {
+  //   e.preventDefault();
+  //   if(email && password){
+  //     const newEntry = { id : new Date().getTime().toString,email: email, password: password };
+  //     setEntry([ newEntry]);
+  //     setemail(''); 
+  //     setpassword('');
+  //   }
+  //   else{
+  //     alert(" Please fill the data")
+  //   }
+   
+  // };
   const submitform = (e) => {
     e.preventDefault();
-    if(email && password){
-      const newEntry = { id : new Date().getTime().toString,email: email, password: password };
-      setEntry([ newEntry]);
-      setemail(''); 
+    if (email && password) {
+      const newEntry = { id: new Date().getTime().toString(), email: email, password: password };
+      setEntry([newEntry]);
+      setemail('');
       setpassword('');
+
+      // Display the email and password for 2 seconds
+      setShowData(true);
+      setTimeout(() => {
+        setShowData(false); // Hide the email and password after 2 seconds
+      }, 2000); // Adjust the time in milliseconds (2000 = 2 seconds)
+    } else {
+      alert("Please fill the data");
     }
-    else{
-      alert(" Please fill the data")
-    }
-   
   };
 
   return (
     <div>
       <form onSubmit={submitform}>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email" style={{padding:'30px'}}>Email</label>
           <input
             type="email"
             id="email"
@@ -36,7 +54,7 @@ const Loginform = () => {
           ></input>
         </div>
         <div>
-          <label htmlFor="Password">Password</label>
+          <label htmlFor="Password" style={{padding:'22px'}}>Password</label>
           <input
             type="password"
             id="Password"
@@ -50,17 +68,31 @@ const Loginform = () => {
         </div>
         <button type="submit">Submit</button>
       </form>
-      <div>
+      {/* <div className='data'>
         {Entry.map((currentElem) => (
           <div key={currentElem.id}>
            <p> Email: {currentElem.email}</p>
            <p> Password: {currentElem.password}</p>
           </div>
         ))}
-      </div>
+      </div> */}
+     <div className='data'>
+     {Showdata && (
+        <div>
+          {Entry.map((currentElem) => (
+            <div key={currentElem.id}>
+              <p>Email: {currentElem.email}</p>
+              <p>Password: {currentElem.password}</p>
+            </div>
+          ))}
+        </div>
+      )}
+     </div>
     </div>
   );
 };
 
 export default Loginform;
+
+
 

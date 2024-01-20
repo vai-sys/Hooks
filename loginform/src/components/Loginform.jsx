@@ -27,11 +27,13 @@ const Loginform = () => {
       setemail('');
       setpassword('');
 
-      // Display the email and password for 2 seconds
+      
+
+       
       setShowData(true);
       setTimeout(() => {
-        setShowData(false); // Hide the email and password after 2 seconds
-      }, 2000); // Adjust the time in milliseconds (2000 = 2 seconds)
+        setShowData(false); 
+      }, 2000); 
     } else {
       alert("Please fill the data");
     }

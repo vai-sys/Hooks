@@ -21,6 +21,7 @@ const Notify = () => {
       
     </div>
   )
+
 }
 
 export default Notify

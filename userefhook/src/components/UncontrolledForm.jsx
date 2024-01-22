@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 
 const UncontrolledForm = () => {
   const Luckname = useRef(null);
-  const [show, setshow] = useState(false);
+  const [show, setshow] = useState("");
 
   const submitfunction = (e) => {
     e.preventDefault();
